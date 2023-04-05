@@ -39,6 +39,12 @@ export default function App(): JSX.Element {
 
   return (
     <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <ImageViewer
+          placeHolderImage={require("./assets/images/background-image.png")}
+          selectedImage={selectedImage}
+        />
+      </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
