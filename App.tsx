@@ -13,6 +13,7 @@ export default function App(): JSX.Element {
 
   const onReset = () => {
     setShowAppOptions(false);
+    setSelectedImage(null);
   };
 
   const onAddSticker = () => {
