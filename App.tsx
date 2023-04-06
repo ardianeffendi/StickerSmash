@@ -6,10 +6,15 @@ import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import IconButton from "./components/IconButton";
 import CircleButton from "./components/CircleButton";
+import EmojiPicker from "./components/EmojiPicker";
+import EmojiList from "./components/EmojiList";
+import EmojiSticker from "./components/EmojiSticker";
 
 export default function App(): JSX.Element {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
+  const [pickedEmoji, setPickedEmoji] = useState<string | null>(null);
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -17,7 +22,11 @@ export default function App(): JSX.Element {
   };
 
   const onAddSticker = () => {
-    // TODO: Implement later
+    setIsModalVisible(true);
+  };
+
+  const onModalClose = () => {
+    setIsModalVisible(false);
   };
 
   const onSaveImageAsync = async () => {
@@ -45,6 +54,9 @@ export default function App(): JSX.Element {
           placeHolderImage={require("./assets/images/background-image.png")}
           selectedImage={selectedImage}
         />
+        {pickedEmoji !== null ? (
+          <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
+        ) : null}
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
@@ -72,6 +84,9 @@ export default function App(): JSX.Element {
           />
         </View>
       )}
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
