@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { ImageSourcePropType, StyleSheet, View } from "react-native";
+import { useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ImageViewer from "./components/ImageViewer";
 import Button from "./components/Button";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
 import IconButton from "./components/IconButton";
 import CircleButton from "./components/CircleButton";
 import EmojiPicker from "./components/EmojiPicker";
@@ -14,7 +15,9 @@ export default function App(): JSX.Element {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
-  const [pickedEmoji, setPickedEmoji] = useState<string | null>(null);
+  const [pickedEmoji, setPickedEmoji] = useState<ImageSourcePropType | null>(
+    null
+  );
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -48,7 +51,7 @@ export default function App(): JSX.Element {
   };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer
           placeHolderImage={require("./assets/images/background-image.png")}
@@ -88,7 +91,7 @@ export default function App(): JSX.Element {
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 

@@ -2,7 +2,7 @@ import { Image, ImageSourcePropType, View } from "react-native";
 
 type EmojiStickerProps = {
   imageSize: number;
-  stickerSource: string;
+  stickerSource: ImageSourcePropType;
 };
 
 const EmojiSticker = ({ imageSize, stickerSource }: EmojiStickerProps) => {

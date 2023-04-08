@@ -1,8 +1,15 @@
 import { useState } from "react";
-import { FlatList, Image, Platform, Pressable, StyleSheet } from "react-native";
+import {
+  FlatList,
+  Image,
+  ImageSourcePropType,
+  Platform,
+  Pressable,
+  StyleSheet,
+} from "react-native";
 
 type EmojiListProps = {
-  onSelect: React.Dispatch<React.SetStateAction<string | null>>;
+  onSelect: React.Dispatch<React.SetStateAction<ImageSourcePropType | null>>;
   onCloseModal: () => void;
 };
 const EmojiList = ({ onSelect, onCloseModal }: EmojiListProps) => {
@@ -14,6 +21,7 @@ const EmojiList = ({ onSelect, onCloseModal }: EmojiListProps) => {
     require("../assets/images/emoji5.png"),
     require("../assets/images/emoji6.png"),
   ]);
+
   return (
     <FlatList
       horizontal
