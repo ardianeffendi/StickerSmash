@@ -8,7 +8,7 @@ image and the emoji sticker.
 
 ## Installation
 
-Use the node package manager [npm] (https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+Use the node package manager [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 to install dependencies.
 
 ```bash
